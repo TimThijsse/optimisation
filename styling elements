@@ -1,0 +1,5 @@
+var stylesheet = document.getElementsByTagName("style")[0].sheet;
+stylesheet.insertRule('.classX { color: red; }');
+
+var x = document.querySelector(#id1);
+X.classList.add("classX");
