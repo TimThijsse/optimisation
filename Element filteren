@@ -1,0 +1,13 @@
+var nodelist = div.querySelectorAll(".cell-image");
+
+var i;
+
+for (i = 0; i < nodelist.length; i++) {
+
+var nodelist_content = nodelist[i].innerHTML;
+
+if (nodelist_content.indexOf("nodecontentX") >-1){
+
+nodelist[i].innerHTML = "ok";
+
+}
