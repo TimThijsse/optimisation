@@ -1,0 +1,8 @@
+var el = document.querySelectorAll('div.product-attribute--desktop a img');
+
+for (var i = 0; i < el.length; i++) {
+
+var currentEl = el[i];
+
+ currentEl.src.replace("-inch", "-inch-cm");
+}
