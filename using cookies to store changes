@@ -1,0 +1,97 @@
+//set cookie PlatteTVstore
+
+function setCookie(cname,cvalue,exdays) {
+
+var d = new Date();
+
+d.setTime(d.getTime() + (exdays*24*60*60*1000));
+
+var expires = "expires=" + d.toGMTString();
+
+document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+
+}
+
+function getCookie(cname) {
+
+var name = cname + "=";
+
+var decodedCookie = decodeURIComponent(document.cookie);
+
+var ca = decodedCookie.split(';');
+
+for(var i = 0; i < ca.length; i++) {
+
+var c = ca[i];
+
+while (c.charAt(0) == ' ') {
+
+c = c.substring(1);
+
+}
+
+if (c.indexOf(name) == 0) {
+
+return c.substring(name.length, c.length);
+
+}
+
+}
+
+return "";
+
+}
+
+function checkCookie() {
+
+var cookiecontent = getCookie('PlatteTVstore');
+
+var store = document.querySelector('#branch_banner_wrapper');
+
+var locationblock = document.querySelectorAll('#locationblock');
+
+if ( cookiecontent != "") {
+
+dataLayer.push({'store.banner': cookiecontent , });
+
+if (nodelist_content.indexOf( cookiecontent ) > -1){
+
+store.insertAdjacentHTML('beforebegin', "tekst");
+
+break;
+
+}
+
+}
+
+//set
+
+function showFunction() {
+
+dataLayer.push({'store.banner':'open'});
+
+document.cookie = "PlatteTVstore= ; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";location.reload();
+
+}
+
+//remove
+
+document.getElementById("winkelwijzigen").onclick = function() {showFunction();
+
+this.remove()};
+
+} else {
+
+document.this.onchange = function() {
+
+var store= this.value;
+
+setCookie('PlatteTVstore', store, 1);
+
+dataLayer.push({'event':'store-select','store.name':store});
+
+};
+
+}
+
+}
