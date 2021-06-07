@@ -1,0 +1,8 @@
+//Voorbeeld van element verplaatsen:
+
+var plek = document.querySelector('.categories-heading');
+
+plek.insertAdjacentHTML('beforeend', "bericht");
+plek.innerHTML = "ok";
+
+dataLayer.push({'test.variant': "variant1" , });
