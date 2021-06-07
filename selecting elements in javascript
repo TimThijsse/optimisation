@@ -1,0 +1,6 @@
+
+var elementType = document.querySelector('iframe');
+var elementClassname = document.querySelector('.classname');
+var elementIdname = document.getElementById("demo");
+var elementPropertyname = document.querySelector('[name=email]');
+var elementDataLayer = window.google_tag_manager['GTM-N6JQ9N'].dataLayer.get('ProductID');
