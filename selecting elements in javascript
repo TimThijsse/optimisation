@@ -4,3 +4,25 @@ var elementClassname = document.querySelector('.classname');
 var elementIdname = document.getElementById("demo");
 var elementPropertyname = document.querySelector('[name=email]');
 var elementDataLayer = window.google_tag_manager['GTM-N6JQ9N'].dataLayer.get('ProductID');
+
+//select elements based on content
+this.indexOf( "content" );
+
+//get parameter
+function getUrlVars() {
+var vars = {};
+var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+vars[key] = value;
+});
+return vars;
+}
+var mytext = getUrlVars()["text"];
+
+function getUrlParam(parameter, defaultvalue){
+var urlparameter = defaultvalue;
+if(window.location.href.indexOf(parameter) > -1){
+urlparameter = getUrlVars()[parameter];
+}
+return urlparameter;
+}
+var mytext = getUrlParam('text','Empty');
