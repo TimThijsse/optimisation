@@ -1,0 +1,11 @@
+var width = window.innerWidth;
+
+if ( width > 612){
+
+var brandbanner = 'test1';
+
+} else {
+
+brandbanner = 'test2';
+
+}
