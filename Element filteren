@@ -1,3 +1,6 @@
+//select a class, look for i'ts content and then change it
+
+
 var nodelist = div.querySelectorAll(".cell-image");
 
 var i;
