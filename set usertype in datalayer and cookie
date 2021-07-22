@@ -1,0 +1,81 @@
+
+(function() {
+    'use strict';
+
+
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+
+    for(var i = 0; i < ca.length; i++) {
+
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+    // vars
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars;
+}
+
+function getLocation() {
+
+    var userid = window.google_tag_manager['G-000000000'].dataLayer.get('user.id');
+    var cType = getCookie('yourdomain-usertype');
+    var dType = window.google_tag_manager['G-000000000'].dataLayer.get('user.usertype');
+    var vType = getUrlVars()["ut"];
+
+    //als de parameter niet bestaat maar de cookie wel
+    if ( cType != "") {
+
+        if ( vType ) {
+            dType = vType.replace('#','');
+            dType = dType.replace('%20',' ');
+            dType = dType.replace('%20',' ');
+            dType = dType.replace('%20',' ');
+            dType = dType.replace('%27','');
+            setCookie('yourdomain-usertype', dType, 1);
+        } else {
+          dType = cType;
+        };
+        window.dataLayer.push({'user':{ 'id' : userid , 'usertype': dType }});
+    }
+
+     //als de cookie niet leeg is
+    else if ( vType ) {
+            dType = vType.replace('#','');
+            dType = dType.replace('%20',' ');
+            dType = dType.replace('%20',' ');
+            dType = dType.replace('%20',' ');
+        dType = dType.replace('%27','');
+            setCookie('yourdomain-usertype', dType, 1);
+        window.dataLayer.push({'user':{ 'id' : userid , 'usertype': dType }});
+        }
+
+}
+
+window.onload = function() {
+getLocation();
+}
+})();
