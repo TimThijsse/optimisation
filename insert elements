@@ -2,7 +2,14 @@
 
 var plek = document.querySelector('.categories-heading');
 
+//insert selected element
+plek.insertAdjacentElement('afterend', var);
+
+//insert html
 plek.insertAdjacentHTML('beforeend', "bericht");
+
+//change inner HTML
 plek.innerHTML = "ok";
 
+//add datalayer information
 dataLayer.push({'test.variant': "variant1" , });
